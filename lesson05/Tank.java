@@ -12,14 +12,22 @@ public class Tank extends GameObject implements Poolable {
     public enum Owner {
         PLAYER, AI
     }
+<<<<<<< HEAD
 
+=======
+>>>>>>> lesson05
     private Owner ownerType;
     private Weapon weapon;
     private Vector2 destination;
     private TextureRegion[] textures;
     private TextureRegion[] weaponsTextures;
+<<<<<<< HEAD
 
     private TextureRegion progressbarTexture;
+=======
+    private TextureRegion progressbarTexture;
+
+>>>>>>> lesson05
     private int hp;
     private int hpMax;
     private float angle;
@@ -66,6 +74,10 @@ public class Tank extends GameObject implements Poolable {
 
         this.timePerFrame = 0.08f;
         this.rotationSpeed = 90.0f;
+<<<<<<< HEAD
+=======
+
+>>>>>>> lesson05
     }
 
     public void setup(Owner ownerType, float x, float y) {
@@ -111,6 +123,13 @@ public class Tank extends GameObject implements Poolable {
         checkBounds();
     }
 
+<<<<<<< HEAD
+=======
+    public void healthLevel(int value) { // показатель здоровья
+        hp+= value;
+    }
+
+>>>>>>> lesson05
     public void commandMoveTo(Vector2 point) {
         destination.set(point);
     }
@@ -120,18 +139,33 @@ public class Tank extends GameObject implements Poolable {
     }
 
     public void updateWeapon(float dt) {
+<<<<<<< HEAD
         if (weapon.getType() == Weapon.Type.GROUND && target != null) {
             float angleTo = tmp.set(target.position).sub(position).angle();
             weapon.setAngle(rotateTo(weapon.getAngle(), angleTo, 180.0f, dt));
             int power = weapon.use(dt);
+=======
+        if (weapon.getType() == Weapon.Type.GROUND && target != null && target.isActive()) { // если оружие наземное и есть цель и танк активен
+            float angleTo = tmp.set(target.position).sub(position).angle();
+            weapon.setAngle(rotateTo(weapon.getAngle(), angleTo, 180.0f, dt)); // наводим оружие на цель и
+            int power = weapon.use(dt);                                             // начинаем его применять
+>>>>>>> lesson05
             if (power > -1) {
                 gc.getProjectilesController().setup(position, weapon.getAngle());
             }
         }
+<<<<<<< HEAD
         if (weapon.getType() == Weapon.Type.HARVEST) {
             if (gc.getMap().getResourceCount(this) > 0) {
                 int result = weapon.use(dt);
                 if (result > -1) {
+=======
+
+        if (weapon.getType() == Weapon.Type.HARVEST) {
+            if (gc.getMap().getResourceCount(this) > 0) {
+                int result = weapon.use(dt);
+                if (result > -1) {  
+>>>>>>> lesson05
                     container += gc.getMap().harvestResource(this, result);
                 }
             } else {

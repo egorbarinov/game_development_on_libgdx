@@ -52,7 +52,11 @@ public class GameController {
         for (int i = 0; i < 5; i++) {
             this.tanksController.setup(MathUtils.random(80, 1200), MathUtils.random(80, 640), Tank.Owner.PLAYER);
         }
+<<<<<<< HEAD
         for (int i = 0; i < 2; i++) {
+=======
+        for (int i = 0; i < 5; i++) {
+>>>>>>> lesson05
             this.tanksController.setup(MathUtils.random(80, 1200), MathUtils.random(80, 640), Tank.Owner.AI);
         }
         prepareInput();
@@ -64,6 +68,10 @@ public class GameController {
         map.update(dt);
         checkCollisions(dt);
         // checkSelection();
+<<<<<<< HEAD
+=======
+        checkCollisionTarget(); // проверка на попадание
+>>>>>>> lesson05
     }
 
     public void checkCollisions(float dt) {  // метод проверки танков на столкновение
@@ -84,6 +92,22 @@ public class GameController {
         }
     }
 
+<<<<<<< HEAD
+=======
+    public void checkCollisionTarget() { 
+        for (int i = 0; i < getProjectilesController().getActiveList().size(); i++) {
+            Projectile p =  getProjectilesController().getActiveList().get(i);
+            for (int j = 0; j < tanksController.activeSize(); j++) {
+                Tank t = tanksController.getActiveList().get(j);
+                if (p.getPosition().dst(t.getPosition()) < 32 && t.getOwnerType() == Tank.Owner.AI) {
+                    p.deactivate(); // снаряд деактивируется при попадании в танк
+                    t.healthLevel(-50); // за 1 попадание показатель здоровья уменьшается на 50%
+                }
+            }
+        }
+    }
+
+>>>>>>> lesson05
     public boolean isTankSelected(Tank tank) {  // создаем служебный метод проверки
         return selectedUnits.contains(tank);   // возвращяет булеан, если selectedUnits содержит танк
     }

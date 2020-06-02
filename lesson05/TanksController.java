@@ -28,6 +28,14 @@ public class TanksController extends ObjectPool<Tank> {
     public void setup(float x, float y, Tank.Owner ownerType) {
         Tank t = activateObject();
         t.setup(ownerType, x, y);
+<<<<<<< HEAD
+=======
+
+        //смерть танка
+        if (!t.isActive()) {
+            checkPool();
+        }
+>>>>>>> lesson05
     }
 
     public Tank getNearestAiTank(Vector2 point) {
