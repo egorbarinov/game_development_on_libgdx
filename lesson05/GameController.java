@@ -51,8 +51,9 @@ public class GameController {
 //        this.tanksController.setup(400, 400, Tank.Owner.PLAYER);
         for (int i = 0; i < 5; i++) {
             this.tanksController.setup(MathUtils.random(80, 1200), MathUtils.random(80, 640), Tank.Owner.PLAYER);
-        }
+
         for (int i = 0; i < 5; i++) {
+
             this.tanksController.setup(MathUtils.random(80, 1200), MathUtils.random(80, 640), Tank.Owner.AI);
         }
         prepareInput();
@@ -64,7 +65,7 @@ public class GameController {
         map.update(dt);
         checkCollisions(dt);
         // checkSelection();
-        checkCollisionTarget(); // проверка на попадание
+
     }
 
     public void checkCollisions(float dt) {  // метод проверки танков на столкновение
@@ -84,6 +85,7 @@ public class GameController {
             }
         }
     }
+
 
     public void checkCollisionTarget() { 
         for (int i = 0; i < getProjectilesController().getActiveList().size(); i++) {

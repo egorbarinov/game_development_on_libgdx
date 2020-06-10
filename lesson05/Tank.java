@@ -12,11 +12,13 @@ public class Tank extends GameObject implements Poolable {
     public enum Owner {
         PLAYER, AI
     }
+
     private Owner ownerType;
     private Weapon weapon;
     private Vector2 destination;
     private TextureRegion[] textures;
     private TextureRegion[] weaponsTextures;
+
     private TextureRegion progressbarTexture;
 
     private int hp;
@@ -65,7 +67,6 @@ public class Tank extends GameObject implements Poolable {
 
         this.timePerFrame = 0.08f;
         this.rotationSpeed = 90.0f;
-
     }
 
     public void setup(Owner ownerType, float x, float y) {
@@ -124,19 +125,23 @@ public class Tank extends GameObject implements Poolable {
     }
 
     public void updateWeapon(float dt) {
+
         if (weapon.getType() == Weapon.Type.GROUND && target != null && target.isActive()) { // если оружие наземное и есть цель и танк активен
             float angleTo = tmp.set(target.position).sub(position).angle();
             weapon.setAngle(rotateTo(weapon.getAngle(), angleTo, 180.0f, dt)); // наводим оружие на цель и
             int power = weapon.use(dt);                                             // начинаем его применять
+
             if (power > -1) {
                 gc.getProjectilesController().setup(position, weapon.getAngle());
             }
         }
 
+
         if (weapon.getType() == Weapon.Type.HARVEST) {
             if (gc.getMap().getResourceCount(this) > 0) {
                 int result = weapon.use(dt);
                 if (result > -1) {  
+
                     container += gc.getMap().harvestResource(this, result);
                 }
             } else {

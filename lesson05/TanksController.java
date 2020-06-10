@@ -29,6 +29,7 @@ public class TanksController extends ObjectPool<Tank> {
         Tank t = activateObject();
         t.setup(ownerType, x, y);
 
+
         //смерть танка
         if (!t.isActive()) {
             checkPool();
