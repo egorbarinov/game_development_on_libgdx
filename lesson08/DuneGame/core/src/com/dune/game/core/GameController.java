@@ -26,7 +26,6 @@ import com.dune.game.screens.ScreenManager;
 import com.dune.game.screens.utils.Assets;
 import lombok.Getter;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,11 +40,6 @@ public class GameController {
     private ProjectilesController projectilesController;
     private ParticleController particleController;
     private UnitsController unitsController;
-
-    public BuildingsController getBuildingsController() {
-        return buildingsController;
-    }
-
     private BuildingsController buildingsController;
     private PathFinder pathFinder;
     private Vector2 tmp;
@@ -65,8 +59,8 @@ public class GameController {
     public GameController() {
         this.mouse = new Vector2();
         this.tmp = new Vector2();
-        this.playerLogic = new PlayerLogic(this); // должен быть создан до unitsController, иначе все сломается
-        this.aiLogic = new AiLogic(this);  // должен быть создан до unitsController, иначе все сломается
+        this.playerLogic = new PlayerLogic(this);
+        this.aiLogic = new AiLogic(this);
         this.collider = new Collider(this);
         this.selectionStart = new Vector2(-1, -1);
         this.selectionEnd = new Vector2(-1, -1);
@@ -94,7 +88,6 @@ public class GameController {
             ScreenManager.getInstance().pointCameraTo(getPointOfView());
             mouse.set(Gdx.input.getX(), Gdx.input.getY());
             ScreenManager.getInstance().getViewport().unproject(mouse);
-           // System.out.println(map.isCellGroundPassable(mouse)); проверка проходимости клетки для мышки
             unitsController.update(dt);
             playerLogic.update(dt);
             aiLogic.update(dt);
@@ -217,11 +210,11 @@ public class GameController {
             }
         });
 
-        final TextButton testBtn = new TextButton("Pause", textButtonStyle);
+        final TextButton testBtn = new TextButton("Test", textButtonStyle);
         testBtn.addListener(new ClickListener() {
             @Override
             public void clicked(InputEvent event, float x, float y) {
-                paused = !paused;
+                System.out.println("Test");
                 ;
             }
         });

@@ -78,7 +78,7 @@ public abstract class AbstractUnit extends GameObject implements Poolable, Targe
         }
         tmp.set(position).add(value);
 
-        if (!gc.getMap().isCellGroundPassable(tmp)) { // запрещаем толкать танки за пределы экрана
+        if (!gc.getMap().isCellGroundPassable(tmp)) {
             return;
         }
         position.add(value);
@@ -108,10 +108,6 @@ public abstract class AbstractUnit extends GameObject implements Poolable, Targe
 
     private int getCurrentFrameIndex() {
         return (int) (moveTimer / timePerFrame) % textures.length;
-    }
-
-    public Vector2 getDestination() { ///////////////////////////////////////////////////////!!!!!!!!!!!!!!!!!!!!!!
-        return destination;
     }
 
     public void update(float dt) {
@@ -144,7 +140,7 @@ public abstract class AbstractUnit extends GameObject implements Poolable, Targe
                 position.mulAdd(tmp, -dt);
             }
 
-            if (!gc.getMap().isCellGroundPassable(position)) { // запрет на смещение за пределы карты
+            if (!gc.getMap().isCellGroundPassable(position)) {
                 tmp.set(position).sub(getCellX() * BattleMap.CELL_SIZE + BattleMap.CELL_SIZE / 2, getCellY() * BattleMap.CELL_SIZE + BattleMap.CELL_SIZE / 2).nor().scl(2);
                 position.add(tmp);
             }
