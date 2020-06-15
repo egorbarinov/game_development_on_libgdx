@@ -29,13 +29,20 @@ public class TanksController extends ObjectPool<Tank> {
         Tank t = activateObject();
         t.setup(ownerType, x, y);
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+
+>>>>>>> 227fa5d7c8b49fc8b4f651cdb46717085b06553d
 
         //смерть танка
         if (!t.isActive()) {
             checkPool();
         }
+<<<<<<< HEAD
 >>>>>>> lesson05
+=======
+>>>>>>> 227fa5d7c8b49fc8b4f651cdb46717085b06553d
     }
 
     public Tank getNearestAiTank(Vector2 point) {

@@ -51,12 +51,18 @@ public class GameController {
 //        this.tanksController.setup(400, 400, Tank.Owner.PLAYER);
         for (int i = 0; i < 5; i++) {
             this.tanksController.setup(MathUtils.random(80, 1200), MathUtils.random(80, 640), Tank.Owner.PLAYER);
+<<<<<<< HEAD
         }
 <<<<<<< HEAD
         for (int i = 0; i < 2; i++) {
 =======
         for (int i = 0; i < 5; i++) {
 >>>>>>> lesson05
+=======
+
+        for (int i = 0; i < 5; i++) {
+
+>>>>>>> 227fa5d7c8b49fc8b4f651cdb46717085b06553d
             this.tanksController.setup(MathUtils.random(80, 1200), MathUtils.random(80, 640), Tank.Owner.AI);
         }
         prepareInput();
@@ -69,9 +75,13 @@ public class GameController {
         checkCollisions(dt);
         // checkSelection();
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
         checkCollisionTarget(); // проверка на попадание
 >>>>>>> lesson05
+=======
+
+>>>>>>> 227fa5d7c8b49fc8b4f651cdb46717085b06553d
     }
 
     public void checkCollisions(float dt) {  // метод проверки танков на столкновение
@@ -93,7 +103,11 @@ public class GameController {
     }
 
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
+=======
+
+>>>>>>> 227fa5d7c8b49fc8b4f651cdb46717085b06553d
     public void checkCollisionTarget() { 
         for (int i = 0; i < getProjectilesController().getActiveList().size(); i++) {
             Projectile p =  getProjectilesController().getActiveList().get(i);
@@ -107,7 +121,10 @@ public class GameController {
         }
     }
 
+<<<<<<< HEAD
 >>>>>>> lesson05
+=======
+>>>>>>> 227fa5d7c8b49fc8b4f651cdb46717085b06553d
     public boolean isTankSelected(Tank tank) {  // создаем служебный метод проверки
         return selectedUnits.contains(tank);   // возвращяет булеан, если selectedUnits содержит танк
     }
